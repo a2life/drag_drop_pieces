@@ -1,0 +1,65 @@
+#app {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.logo {
+  height: 120px;
+  width:120px;
+  padding: 36px;
+}
+
+img {
+  touch-action:none;
+}
+.koma {
+  height: 70px;
+  width: 70px;
+  padding: 5px;
+
+}
+.koma:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.koma.preact:hover {
+  filter: drop-shadow(0 0 2em #673ab8aa);
+}
+
+img {
+  transition:300ms;
+}
+.piece-box {
+  width:120px;
+  height:120px;
+  position:relative;
+  background-size:100% 100%;
+
+
+}
+.animate-move {
+  transition: 0.4s;
+}
+
+.piece-box:has(>:last-child:nth-child(1)) {
+  /* has one child */
+  background-color: aquamarine;
+}
+.piece-box:has(>:last-child:nth-child(2)) {
+  /* has two children */
+  background-color: greenyellow;
+}
+.piece-box:has(>:last-child:nth-child(3)) {
+  /* has three children */
+  background-color: darkolivegreen;
+
+}
+
+
+.piece-box .koma {
+  margin-top:22px;
+}
+.move-target {
+  position:fixed;
+}

@@ -1,0 +1,31 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+dist
+dist-ssr
+*.local
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+/public/assets/img/ban/
+/public/assets/img/focus/
+/public/assets/img/masu/
+/public/assets/img/other/
+/public/assets/img/ban.html
+/public/vite.svg
+/src/assets/preact.svg
