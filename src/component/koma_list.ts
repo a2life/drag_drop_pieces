@@ -1,4 +1,3 @@
-const koma_list = ['fu', 'to', 'kyo', 'nkyo', 'kei', 'nkei', 'gin', 'ngin', 'kin', 'kaku', 'uma', 'hi', 'ryu', 'ou']
 
 export type shogiPiece= {name:string,jName:string, graphics:string}
 

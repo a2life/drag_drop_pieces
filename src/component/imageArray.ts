@@ -1,4 +1,4 @@
-import {Shogi_piece_arr, shogiPiece} from "./koma_list";
+import {Shogi_piece_arr} from "./koma_list";
 /*
 export const Shogi_piece_arr:shogiPiece[] = [
     {name: 'Pawn', jName: '歩兵', graphics: 'fu'},

@@ -1,14 +1,14 @@
 import {useState} from 'preact/hooks'
 
-import {Shogi_piece_obj, Shogi_piece_arr, shogiPiece, komaSetArray} from "./component/koma_list";
-import {imageArray, KomaSet} from "./component/imageArray";
+import {Shogi_piece_arr, komaSetArray} from "./component/koma_list";
+import {imageArray} from "./component/imageArray";
 import './app.css'
 import {CSSProperties} from "preact/compat";
 
 function shuffleArray(array: any[]) {
-    for (var i = array.length - 1; i > 0; i--) {
-        var j = Math.floor(Math.random() * (i + 1));
-        var temp = array[i];
+    for (let i = array.length - 1; i > 0; i--) {
+        let j = Math.floor(Math.random() * (i + 1));
+        let temp = array[i];
         array[i] = array[j];
         array[j] = temp;
     }
@@ -87,10 +87,10 @@ export function App() {
         e.preventDefault();
     //    console.log('Drag Enter event fired');
     }
-    const drag_leave_handler = (e: DragEvent) => {
+  /*  const drag_leave_handler = (e: DragEvent) => {
         e.preventDefault();
     //    console.log('Leave Event fired.')
-    }
+    }*/
     const draggable_img = (data: string, alt: string) => <img
         src={data}
         class="koma"
@@ -132,7 +132,7 @@ export function App() {
                         </select>
                     </div>
                     <div>
-                        {(src_graphics_array.length === 0 || (src_graphics_array.length === 1 && src_graphics_array[0].challenger === false)) &&
+                        {(src_graphics_array.length === 0 || (src_graphics_array.length === 1 && !src_graphics_array[0].challenger)) &&
                             <div>Nice, now select different Koma Style</div>}
                         {src_graphics_array.map((e) => {
                                 if (!(e.pieceName === "gyoku" && !e.challenger)) return draggable_img(e.piece('S'), e.pieceName)
@@ -153,11 +153,6 @@ export function App() {
                                      onDragEnter={drag_enter_handler}
                                      style={"background-image:url('assets/img/moves/" + p.graphics + ".png');"}
                                      onDragOver={drag_over_handler}
-                                     onTouchEnd={e => {
-                                        // console.log('shogi_piece listner:', e)
-                                     }}
-
-
                                      id={p.graphics}>
 
                                     {trgt_graphics_array.map((e) => {
