@@ -4,6 +4,7 @@ import {Shogi_piece_arr, komaSetArray} from "./component/koma_list";
 import {imageArray} from "./component/imageArray";
 import './app.css'
 import {CSSProperties} from "preact/compat";
+import {PathImage} from "./component/svg_elements";
 
 function shuffleArray(array: any[]) {
     for (let i = array.length - 1; i > 0; i--) {
@@ -50,7 +51,8 @@ export function App() {
     }
     const drop_handler = (e: DragEvent) => {
         e.preventDefault()
-        const target = e.target as HTMLDivElement
+        const target = e.currentTarget as HTMLDivElement
+        console.log(target)
         target.style.visibility="visible"
         const data = !!e.dataTransfer ? e.dataTransfer.getData("text/plain") : "";
         const dataText = !!e.dataTransfer ? e.dataTransfer.getData("text/alt") : ""
@@ -123,8 +125,8 @@ export function App() {
     />
     return (
         <>
-            <div class="row">
-                <div class="col-4">
+            <div class="wrapper">
+                <div class="left-pane">
                     <div>
                         <label for="styleSelector" class="form-label">Select Koma Style </label>
                         <select id="styleSelector" class="form-select mb-3" onChange={onSelect_handler}>
@@ -143,15 +145,16 @@ export function App() {
 
                     </div>
                 </div>
-                <div className="col-8" id="drop-zone">
+                <div className="right=pane" id="drop-zone">
                     {Shogi_piece_arr.map(p => {
                             if (!(p.name === "Gyoku" && !komaSet.challenger)) return <div
-                                class="d-inline-block  border border-primary align-top m-1 rounded">
+                                class="d-inline-block   align-top m-1 rounded">
                                 <div class="piece-box"
                                      draggable={true}
                                      onDrop={drop_handler}
                                      onDragEnter={drag_enter_handler}
-                                     style={"background-image:url('assets/img/moves/" + p.graphics + ".png');"}
+
+                                     style={"background-image:url('"+PathImage(p.graphics)+"')"}
                                      onDragOver={drag_over_handler}
                                      id={p.graphics}>
 
@@ -165,9 +168,8 @@ export function App() {
                     )
                     }
                 </div>
-            </div>
 
-            {touchEnd}
+            </div> {touchEnd}
 
         </>
     )
