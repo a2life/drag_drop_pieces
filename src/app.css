@@ -5,11 +5,6 @@
   text-align: center;
 }
 
-.logo {
-  height: 120px;
-  width:120px;
-  padding: 36px;
-}
 
 img {
   touch-action:none;
@@ -30,12 +25,24 @@ img {
 img {
   transition:300ms;
 }
+
+.koma-selector {
+  width: 100%;
+  padding: 0.5rem;
+  border-radius:0.3rem;
+  margin-bottom:0.5rem;
+  background-color: transparent;
+
+  border: 1px solid darkgray;
+}
 .piece-box {
   width:120px;
   height:120px;
   position:relative;
   background-size:100% 100%;
   border:1px solid black;
+  border-top-left-radius: 0.3rem;
+  border-top-right-radius:0.3rem;
 
 
 }
@@ -57,9 +64,19 @@ img {
 
 }
 
-
+.piece-container {
+  display: inline-block;
+  margin:1rem;
+}
 .piece-box .koma {
   margin-top:22px;
+}
+
+.piece-name {
+  background-color:black;
+  color:white;
+  border-bottom-left-radius:0.3rem;
+  border-bottom-right-radius:0.3rem;
 }
 .move-target {
   position:fixed;

@@ -4,7 +4,7 @@ import {Shogi_piece_arr, komaSetArray} from "./component/koma_list";
 import {imageArray} from "./component/imageArray";
 import './app.css'
 import {CSSProperties} from "preact/compat";
-import {PathImage} from "./component/svg_elements";
+import {SVGImage} from "./component/svg_elements";
 
 function shuffleArray(array: any[]) {
     for (let i = array.length - 1; i > 0; i--) {
@@ -128,8 +128,8 @@ export function App() {
             <div class="wrapper">
                 <div class="left-pane">
                     <div>
-                        <label for="styleSelector" class="form-label">Select Koma Style </label>
-                        <select id="styleSelector" class="form-select mb-3" onChange={onSelect_handler}>
+                        <label for="styleSelector" class="selector-label">Select Koma Style </label>
+                        <select id="styleSelector" class="koma-selector" onChange={onSelect_handler}>
                             {komaSetArray.map((e, index) => <option value={index}>{e.name}</option>)}
                         </select>
                     </div>
@@ -147,14 +147,14 @@ export function App() {
                 </div>
                 <div className="right=pane" id="drop-zone">
                     {Shogi_piece_arr.map(p => {
-                            if (!(p.name === "Gyoku" && !komaSet.challenger)) return <div
-                                class="d-inline-block   align-top m-1 rounded">
+                            if (!(p.name === "Gyoku" && !komaSet.challenger)) return (
+                                <div class="piece-container ">
                                 <div class="piece-box"
                                      draggable={true}
                                      onDrop={drop_handler}
                                      onDragEnter={drag_enter_handler}
 
-                                     style={"background-image:url('"+PathImage(p.graphics)+"')"}
+                                     style={"background-image:url('"+SVGImage(p.graphics)+"')"}
                                      onDragOver={drag_over_handler}
                                      id={p.graphics}>
 
@@ -162,8 +162,8 @@ export function App() {
                                         if (e.alt === p.graphics) return draggable_img(e.data, e.alt)
                                     })}
                                 </div>
-                                <div className=" align-self-end bg-dark text-white">{p.name}</div>
-                            </div>
+                                <div className="piece-name ">{p.name}</div>
+                            </div>)
                         }
                     )
                     }
